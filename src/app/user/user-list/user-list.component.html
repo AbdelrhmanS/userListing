@@ -1,0 +1,19 @@
+<div>
+  <h2>User List</h2>
+  <ul *ngIf="userList">
+    <li *ngFor="let user of userList">
+      {{user.id}} -
+      <a [routerLink]="['/', 'users', user.id]"> {{user.username}}</a>
+      <button (click)="deleteUser(user.id)">
+        Delete
+      </button>
+    </li>
+  </ul>
+
+  <div>
+    <label>Hero name:</label> <input #username />
+    <button (click)="createUser(username.value); username.value=''">
+      Add
+    </button>
+  </div>
+</div>
