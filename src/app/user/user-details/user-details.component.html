@@ -1,4 +1,14 @@
 <div>
   <h2>User Details</h2>
-  <p>Username: {{user.username}}</p>
+  <label>Username: </label> {{user.username}}
+
+  <div *ngIf="user.department_name">
+    <label>Department name: </label> {{user.department_name}}
+  </div>
+  <div *ngIf="!user.department_name">
+    <label>Department name:</label> <input #department />
+    <button (click)="createDepartment(department.value, user.id); department.value=''">
+      Add
+    </button>
+  </div>
 </div>

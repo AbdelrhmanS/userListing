@@ -3,11 +3,12 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import {Observable} from 'rxjs/Observable';
-import {User} from '../../user/models/user';
+import {Department} from '../models/department';
 import {Config} from '../../app.config';
+import {User} from '../../user/models/user';
 
 @Injectable()
-export class UserService {
+export class DepartmentService {
   defaultOptions: RequestOptions;
 
   constructor(private httpService: Http,
@@ -22,28 +23,28 @@ export class UserService {
 
   }
 
-  getUserList(): Observable<User[]> {
+  getDepartmentList(): Observable<Department[]> {
 
     return this.httpService
-      .get(`${this.config.baseUrl}/api/users`, this.defaultOptions)
+      .get(`${this.config.baseUrl}/api/departments`, this.defaultOptions)
       .map(res => res.json());
   }
 
-  createUser(username: string): Observable<User[]> {
+  createDepartment(departmentName: string, userId: number): Observable<User> {
     return this.httpService
-      .post(`${this.config.baseUrl}/api/users`, {username}, this.defaultOptions)
+      .post(`${this.config.baseUrl}/api/departments`, {departmentName, userId}, this.defaultOptions)
       .map(res => res.json());
   }
 
-  deleteUser(userId: number): Observable<User[]> {
+  deleteDepartment(departmentId: number): Observable<Department[]> {
     return this.httpService
-      .delete(`${this.config.baseUrl}/api/users/${userId}`, this.defaultOptions)
+      .delete(`${this.config.baseUrl}/api/departments/${departmentId}`, this.defaultOptions)
       .map(res => res.json());
   }
 
-  getUser(userId: number): Observable<User> {
+  getDepartment(departmentId: number): Observable<Department> {
     return this.httpService
-      .get(`${this.config.baseUrl}/api/users/${userId}`, this.defaultOptions)
+      .get(`${this.config.baseUrl}/api/departments/${departmentId}`, this.defaultOptions)
       .map(res => res.json());
   }
 }

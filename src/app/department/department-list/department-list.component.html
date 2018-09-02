@@ -1,0 +1,12 @@
+<div>
+  <h2>Department List</h2>
+  <ul *ngIf="departmentList">
+    <li *ngFor="let department of departmentList">
+      {{department.id}} -
+      <a [routerLink]="['/', 'departments', department.id]"> {{department.department_name}}</a>
+      <button (click)="deleteDepartment(department.id)">
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>

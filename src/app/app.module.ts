@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {routing} from './app.routes';
 import {HttpModule} from '@angular/http';
 import {UserModule} from './user/user.module';
+import {DepartmentModule} from './department/department.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {UserModule} from './user/user.module';
   imports: [
     BrowserModule,
     UserModule,
+    DepartmentModule,
     routing,
     HttpModule,
   ],
